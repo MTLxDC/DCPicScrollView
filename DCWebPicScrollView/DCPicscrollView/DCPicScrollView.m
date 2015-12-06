@@ -151,6 +151,8 @@
 
 - (void)prepareTitleLabel {
     
+    [self setStyle:PageControlAtRight];
+
    UIView *left = [self creatLabelBgView];
    UIView *center = [self creatLabelBgView];
    UIView *right = [self creatLabelBgView];
@@ -163,25 +165,24 @@
     [_centerImageView addSubview:center];
     [_rightImageView addSubview:right];
     
-    [self setStyle:PageControlAtRight];
 
 }
 
 - (UIView *)creatLabelBgView {
     CGFloat h = 25;
     
-    if (myHeight * 0.2 < 25) {
-        h = myHeight * 0.2;
+    if (myHeight * 0.1 > 25) {
+        h = myHeight * 0.1;
     }
     
    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, myHeight-h, myWidth, h)];
     v.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
     
-    UILabel *label = [[UILabel alloc] init];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, myWidth-_PageControl.frame.size.width,h)];
     label.textAlignment = NSTextAlignmentLeft;
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
-    label.font = [UIFont systemFontOfSize:13];
+    label.font = [UIFont systemFontOfSize:h*0.5];
     
     [v addSubview:label];
     
@@ -191,12 +192,8 @@
 
 - (void)setStyle:(PageControlStyle)style {
     if (style == PageControlAtRight) {
-        CGFloat h = 25;
         CGFloat w = _MaxImageCount * pageSize;
         _PageControl.frame = CGRectMake(myWidth - w,myHeight-pageSize,w, 7);
-        _leftLabel.frame =CGRectMake(0, 0, myWidth-w, h);
-        _centerLabel.frame =CGRectMake(0, 0, myWidth-w, h);
-        _rightLabel.frame =CGRectMake(0, 0, myWidth-w, h);
     }
 }
 
@@ -359,7 +356,7 @@
     
     for (NSString *urlSting in _imageData) {
         
-        if (![self LoadDiskCacheWithUrlString:urlSting]) {
+        if ([self LoadDiskCacheWithUrlString:urlSting]) {
             continue;
         }
         
