@@ -10,6 +10,7 @@
 		843F8E921C14238E0055C517 /* place.png in Resources */ = {isa = PBXBuildFile; fileRef = 843F8E911C14238E0055C517 /* place.png */; settings = {ASSET_TAGS = (); }; };
 		846448021C11B94E0026C67E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 846448011C11B94E0026C67E /* main.m */; };
 		846448101C11B94E0026C67E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8464480E1C11B94E0026C67E /* LaunchScreen.storyboard */; };
+		84AB633F1C156158004321E4 /* DCWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB633E1C156158004321E4 /* DCWebImageManager.m */; settings = {ASSET_TAGS = (); }; };
 		84AC26801C129BA700F8C007 /* DCPicScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC267B1C129BA700F8C007 /* DCPicScrollView.m */; settings = {ASSET_TAGS = (); }; };
 		84AC268F1C129BB600F8C007 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26841C129BB600F8C007 /* 1.jpg */; settings = {ASSET_TAGS = (); }; };
 		84AC26901C129BB600F8C007 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26851C129BB600F8C007 /* 2.jpg */; settings = {ASSET_TAGS = (); }; };
@@ -28,6 +29,8 @@
 		846448011C11B94E0026C67E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8464480F1C11B94E0026C67E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		846448111C11B94E0026C67E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84AB633D1C156158004321E4 /* DCWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCWebImageManager.h; sourceTree = "<group>"; };
+		84AB633E1C156158004321E4 /* DCWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCWebImageManager.m; sourceTree = "<group>"; };
 		84AC267A1C129BA700F8C007 /* DCPicScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCPicScrollView.h; sourceTree = "<group>"; };
 		84AC267B1C129BA700F8C007 /* DCPicScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPicScrollView.m; sourceTree = "<group>"; };
 		84AC26841C129BB600F8C007 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 			children = (
 				84AC267A1C129BA700F8C007 /* DCPicScrollView.h */,
 				84AC267B1C129BA700F8C007 /* DCPicScrollView.m */,
+				84AB633D1C156158004321E4 /* DCWebImageManager.h */,
+				84AB633E1C156158004321E4 /* DCWebImageManager.m */,
 			);
 			path = DCPicscrollView;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 				84AC26971C129BB600F8C007 /* ViewController.m in Sources */,
 				846448021C11B94E0026C67E /* main.m in Sources */,
 				84AC26801C129BA700F8C007 /* DCPicScrollView.m in Sources */,
+				84AB633F1C156158004321E4 /* DCWebImageManager.m in Sources */,
 				84AC26961C129BB600F8C007 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -28,8 +28,6 @@ typedef NS_ENUM(NSUInteger, PageControlStyle) {
 //图片被点击会调用该block
 @property (nonatomic,copy) void(^imageViewDidTapAtIndex)(NSInteger index); //index从0开始
 
-@property (nonatomic,copy) void(^downLoadImageError)(NSError *error,NSString *imageUrl);
-
                                                             //imageUrlString或imageName
 - (instancetype)initWithFrame:(CGRect)frame WithImageNames:(NSArray<NSString *> *)ImageName;
 

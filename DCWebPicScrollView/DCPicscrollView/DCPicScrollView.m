@@ -10,14 +10,11 @@
 #define myWidth self.frame.size.width
 #define myHeight self.frame.size.height
 #import "DCPicScrollView.h"
+#import "DCWebImageManager.h"
 
 @interface DCPicScrollView () <UIScrollViewDelegate>
 
-@property (nonatomic,strong) NSMutableDictionary *webImageCache;
-
 @property (nonatomic,copy) NSArray *imageData;
-
-@property (nonatomic,copy) NSString *cachePath;
 
 @end
 
@@ -254,10 +251,44 @@
     
 }
 
-
--(void)dealloc {
-    [self removeTimer];
+- (void)changeImageLeft:(NSInteger)LeftIndex center:(NSInteger)centerIndex right:(NSInteger)rightIndex {
+    
+    if (_isNetwork) {
+        
+        _leftImageView.image = [self setImageWithIndex:LeftIndex];
+        _centerImageView.image = [self setImageWithIndex:centerIndex];
+        _rightImageView.image = [self setImageWithIndex:rightIndex];
+        
+    }else {
+        
+        _leftImageView.image = _imageData[LeftIndex];
+        _centerImageView.image = _imageData[centerIndex];
+        _rightImageView.image = _imageData[rightIndex];
+        
+    }
+    
+    if (_hasTitle) {
+        
+        _leftLabel.text = _titleData[LeftIndex];
+        _centerLabel.text = _titleData[centerIndex];
+        _rightLabel.text = _titleData[rightIndex];
+        
+    }
+    
+    [_scrollView setContentOffset:CGPointMake(myWidth, 0)];
 }
+
+- (UIImage *)setImageWithIndex:(NSInteger)index {
+    
+    //从内存缓存中取,如果没有使用占位图片
+    UIImage *image = [[[DCWebImageManager shareManager] webImageCache] valueForKey:_imageData[index]];
+    if (image) {
+        return image;
+    }else {
+        return _placeImage;
+    }
+}
+
 
 - (void)scorll {
     [_scrollView setContentOffset:CGPointMake(_scrollView.contentOffset.x + myWidth, 0) animated:YES];
@@ -306,140 +337,16 @@
 }
 
 
-- (void)changeImageLeft:(NSInteger)LeftIndex center:(NSInteger)centerIndex right:(NSInteger)rightIndex {
-    
-    if (_isNetwork) {
-        
-        _leftImageView.image = [self setImageWithIndex:LeftIndex];
-        _centerImageView.image = [self setImageWithIndex:centerIndex];
-        _rightImageView.image = [self setImageWithIndex:rightIndex];
-        
-    }else {
-        
-        _leftImageView.image = _imageData[LeftIndex];
-        _centerImageView.image = _imageData[centerIndex];
-        _rightImageView.image = _imageData[rightIndex];
-        
-    }
-    
-    if (_hasTitle) {
-        
-        _leftLabel.text = _titleData[LeftIndex];
-        _centerLabel.text = _titleData[centerIndex];
-        _rightLabel.text = _titleData[rightIndex];
-        
-    }
-    
-    [_scrollView setContentOffset:CGPointMake(myWidth, 0)];
-}
-
-- (BOOL)LoadDiskCacheWithUrlString:(NSString *)urlSting {
-    //取沙盒缓存
-    NSData *data = [NSData dataWithContentsOfFile:[self.cachePath stringByAppendingPathComponent:urlSting.lastPathComponent]];
-    
-    if (data.length > 0 ) {
-        
-        UIImage *image = [UIImage imageWithData:data];
-        
-        if (image) {
-            [self.webImageData setObject:image forKey:urlSting];
-            return YES;
-        }else {
-            [[NSFileManager defaultManager] removeItemAtPath:[self.cachePath stringByAppendingPathComponent:urlSting.lastPathComponent] error:NULL];
-        }
-    }
-    return NO;
-}
-
 - (void)getImage {
     
-    
     for (NSString *urlSting in _imageData) {
-        
-        if ([self LoadDiskCacheWithUrlString:urlSting]) {
-            continue;
-        }
-        
-        if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0) {
-            
-            [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:urlSting] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-
-                [self downLoadImagefinish:data
-                                      url:urlSting
-                                 savePath:[self.cachePath stringByAppendingPathComponent:urlSting.lastPathComponent]
-                                    error:error];
-                
-            }] resume];
-            
-        }else {
-            
-            [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlSting]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
-
-                [self downLoadImagefinish:data
-                                      url:urlSting
-                                 savePath:[self.cachePath stringByAppendingPathComponent:urlSting.lastPathComponent]
-                                    error:connectionError];
-            }] ;
-            
-        }
+        [[DCWebImageManager shareManager] downloadImageWithUrlString:urlSting];
     }
     
 }
 
-- (void)downLoadImagefinish:(NSData *)data url:(NSString *)urlString savePath:(NSString *)path error:(NSError *)error {
-    UIImage *image = [UIImage imageWithData:data];
-    
-    if (error) {
-        if (self.downLoadImageError) {
-            self.downLoadImageError(error,urlString);
-        }
-        return ;
-    }
-    
-    if (!image) {
-        
-        NSString *errorData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSError *error = [NSError errorWithDomain:errorData code:381 userInfo:nil];
-        
-        if (self.downLoadImageError) {
-            self.downLoadImageError(error,urlString);
-        }
-        return ;
-    }
-    
-    //                沙盒缓存
-    [data writeToFile:[path stringByAppendingPathComponent:urlString.lastPathComponent] atomically:YES];
-    //                内存缓存
-    [self.webImageData setObject:image forKey:urlString];
-    
-}
-
-
-
-
-- (UIImage *)setImageWithIndex:(NSInteger)index {
-    
-    //从内存缓存中取,如果没有使用占位图片
-    UIImage *image = [self.webImageCache valueForKey:_imageData[index]];
-    if (image) {
-        return image;
-    }else {
-        return _placeImage;
-    }
-}
-
-- (NSMutableDictionary *)webImageData {
-    if (!_webImageCache) {
-        _webImageCache = [[NSMutableDictionary alloc] init];
-    }
-    return _webImageCache;
-}
-
-- (NSString *)cachePath {
-    if (!_cachePath) {
-        _cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    }
-    return _cachePath;
+-(void)dealloc {
+    [self removeTimer];
 }
 
 //

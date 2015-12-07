@@ -1,0 +1,33 @@
+//
+//  DCWebImageManager.h
+//  DCWebPicScrollView
+//
+//  Created by dengchen on 15/12/7.
+//  Copyright © 2015年 name. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface DCWebImageManager : NSObject
+
+
+
+//只需要设置这2个就行了
+
+//下载失败重复下载次数,默认不重复,
+@property (nonatomic,assign) NSUInteger DownloadImageRepeatCount;
+
+//下载失败会调用downLoadImageError block
+@property (nonatomic,copy) void(^downLoadImageError)(NSError *error,NSString *imageUrl);
+
+
+
+//内存缓存
+@property (nonatomic,strong) NSMutableDictionary *webImageCache;
+
++ (instancetype)shareManager;
+
+//下载到的图片都会被保存到webImageCache和沙盒中,key为urlString
+- (void)downloadImageWithUrlString:(NSString *)urlSting;
+
+@end
