@@ -84,6 +84,7 @@
 
 
 - (void)downLoadImagefinish:(NSData *)data url:(NSString *)urlString error:(NSError *)error response:(NSURLResponse *)response{
+    
     UIImage *image = [UIImage imageWithData:data];
     
     if (error) {
@@ -96,16 +97,17 @@
         NSHTTPURLResponse *res = (NSHTTPURLResponse *)response;
         NSString *errorData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         
-        NSError *error = [NSError errorWithDomain:[NSString stringWithFormat:@"%@\nhttp statusCode:%zd",errorData,res.statusCode] code:406 userInfo:nil];
+        NSError *error = [NSError errorWithDomain:[NSString stringWithFormat:@"错误数据字符串信息:%@\nhttp statusCode(错误代码):%zd",errorData,res.statusCode] code:0 userInfo:nil];
         
         [self repeatDownLoadImage:urlString error:error];
         return ;
     }
     
-    //                沙盒缓存
-    [data writeToFile:[self.cachePath stringByAppendingPathComponent:urlString.lastPathComponent] atomically:YES];
     //                内存缓存
     [self.webImageData setObject:image forKey:urlString];
+    //                沙盒缓存
+    [data writeToFile:[self.cachePath stringByAppendingPathComponent:urlString.lastPathComponent] atomically:YES];
+ 
     
 }
 

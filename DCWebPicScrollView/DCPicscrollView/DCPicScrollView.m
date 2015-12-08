@@ -142,7 +142,6 @@
     [self prepareTitleLabel];
     _hasTitle = YES;
     [self changeImageLeft:_MaxImageCount-1 center:0 right:1];
-
 }
 
 
@@ -276,6 +275,11 @@
     }
     
     [_scrollView setContentOffset:CGPointMake(myWidth, 0)];
+}
+
+-(void)setPlaceImage:(UIImage *)placeImage {
+    _placeImage = placeImage;
+    [self changeImageLeft:_MaxImageCount-1 center:0 right:1];
 }
 
 - (UIImage *)setImageWithIndex:(NSInteger)index {
