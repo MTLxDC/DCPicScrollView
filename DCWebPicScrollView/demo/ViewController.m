@@ -14,7 +14,8 @@
 
 @end
 
-CGFloat h = 150;
+static CGFloat h = 120;
+
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -34,8 +35,7 @@ CGFloat h = 150;
     NSArray *UrlStringArray = @[@"http://p1.qqyou.com/pic/UploadPic/2013-3/19/2013031923222781617.jpg",
                      @"http://cdn.duitang.com/uploads/item/201409/27/20140927192649_NxVKT.thumb.700_0.png",
                      @"http://img4.duitang.com/uploads/item/201409/27/20140927192458_GcRxV.jpeg",
-                     @"http://cdn.duitang.com/uploads/item/201304/20/20130420192413_TeRRP.thumb.700_0.jpeg",
-                     @"http://img3.imgtn.bdimg.com/it/u=1686576823,3500450034&fm=116&gp=0.jpg"];
+                     @"http://cdn.duitang.com/uploads/item/201304/20/20130420192413_TeRRP.thumb.700_0.jpeg"];
     
 
    NSArray *titleArray = [@"午夜寂寞 谁来陪我,唱一首动人的情歌.你问我说 快不快乐,唱情歌越唱越寂寞.谁明白我 想要什么,一瞬间释放的洒脱.灯光闪烁 不必啰嗦,我就是传说中的那个摇摆哥.我是摇摆哥 音乐会让我快乐,我是摇摆哥 我已忘掉了寂寞.我是摇摆哥 音乐会让我洒脱,我们一起唱这摇摆的歌" componentsSeparatedByString:@"."];
@@ -44,11 +44,12 @@ CGFloat h = 150;
     //显示顺序和数组顺序一致
     //设置图片url数组,和滚动视图位置
     
-    DCPicScrollView  *picView =
-    [[DCPicScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, h * 2) WithImageNames:UrlStringArray];
+    DCPicScrollView  *picView = [DCPicScrollView picScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, h * 2) WithImageUrls:UrlStringArray];
     
     //显示顺序和数组顺序一致
     //设置标题显示文本数组
+
+
     
     picView.titleData = titleArray;
     
@@ -64,6 +65,7 @@ CGFloat h = 150;
     
     //default is 2.0f,如果小于0.5不自动播放
     picView.AutoScrollDelay = 1.0f;
+//    picView.textColor = [UIColor redColor];
     
     [self.view addSubview:picView];
     
@@ -95,7 +97,8 @@ CGFloat h = 150;
     };
     
     
-    DCPicScrollView  *picView1 = [[DCPicScrollView alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height - h,self.view.frame.size.width, h) WithImageNames:arr2];
+    DCPicScrollView  *picView1 = [DCPicScrollView picScrollViewWithFrame:CGRectMake(0,self.view.frame.size.height - h*2,self.view.frame.size.width, h) WithImageUrls:arr2];
+    
     picView1.titleData = arr3;
     
     picView1.backgroundColor = [UIColor clearColor];

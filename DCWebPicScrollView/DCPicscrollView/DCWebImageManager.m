@@ -69,7 +69,7 @@
         }] resume];
         
     }else {
-        
+            
         [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlSting]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
             
             [self downLoadImagefinish:data
@@ -127,8 +127,9 @@
             self.downLoadImageError(error,urlString);
         }
     }
-    
 }
+
+
 
 #pragma mark lazyload
 
