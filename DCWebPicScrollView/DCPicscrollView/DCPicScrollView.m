@@ -130,10 +130,13 @@
 }
 
 - (void)setStyle:(PageControlStyle)style {
-    if (style == PageControlAtRight) {
-        CGFloat w = _MaxImageCount * 17.5;
-        _PageControl.frame = CGRectMake(0, 0, w, 7);
+    CGFloat w = _MaxImageCount * 17.5;
+    _PageControl.frame = CGRectMake(0, 0, w, 7);
+    
+    if (style == PageControlAtRight || _hasTitle) {
         _PageControl.center = CGPointMake(myWidth-w*0.5, myHeight-pageSize * 0.5);
+    }else if(style == PageControlAtCenter) {
+        _PageControl.center = CGPointMake(myWidth * 0.5,myHeight-pageSize * 0.5);
     }
 }
 
@@ -191,7 +194,7 @@
 
     
    UIToolbar *v = [[UIToolbar alloc] initWithFrame:CGRectMake(0, myHeight-pageSize, myWidth, pageSize)];
-    
+
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, myWidth-_PageControl.frame.size.width,pageSize)];
     label.textAlignment = NSTextAlignmentLeft;
     label.backgroundColor = [UIColor clearColor];
@@ -342,7 +345,7 @@
     
     if (_isNetwork) {
         
-        _imageData = [ImageNames copy];
+        _imageData = ImageNames;
         
         [self getImage];
         
@@ -354,7 +357,7 @@
             [temp addObject:[UIImage imageNamed:name]];
         }
         
-        _imageData = [temp copy];
+        _imageData = temp;
     }
     
 }

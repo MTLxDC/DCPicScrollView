@@ -14,7 +14,7 @@
 
 @end
 
-static CGFloat h = 120;
+static CGFloat h = 50;
 
 @implementation ViewController
 
@@ -44,7 +44,7 @@ static CGFloat h = 120;
     //显示顺序和数组顺序一致
     //设置图片url数组,和滚动视图位置
     
-    DCPicScrollView  *picView = [DCPicScrollView picScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, h * 2) WithImageUrls:UrlStringArray];
+    DCPicScrollView  *picView = [DCPicScrollView picScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, h*2) WithImageUrls:UrlStringArray];
     
     //显示顺序和数组顺序一致
     //设置标题显示文本数组
@@ -97,9 +97,9 @@ static CGFloat h = 120;
     };
     
     
-    DCPicScrollView  *picView1 = [DCPicScrollView picScrollViewWithFrame:CGRectMake(0,self.view.frame.size.height - h*2,self.view.frame.size.width, h) WithImageUrls:arr2];
+    DCPicScrollView  *picView1 = [DCPicScrollView picScrollViewWithFrame:CGRectMake(0,self.view.frame.size.height - h*5,self.view.frame.size.width, h*2) WithImageUrls:arr2];
     
-    picView1.titleData = arr3;
+    picView1.style = PageControlAtCenter;
     
     picView1.backgroundColor = [UIColor clearColor];
     [picView1 setImageViewDidTapAtIndex:^(NSInteger index) {

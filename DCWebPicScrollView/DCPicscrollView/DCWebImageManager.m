@@ -85,12 +85,13 @@
 
 - (void)downLoadImagefinish:(NSData *)data url:(NSString *)urlString error:(NSError *)error response:(NSURLResponse *)response{
     
-    UIImage *image = [UIImage imageWithData:data];
-    
     if (error) {
         [self repeatDownLoadImage:urlString error:error];
         return ;
     }
+    
+    UIImage *image = [UIImage imageWithData:data];
+
     
     if (!image) {
         
