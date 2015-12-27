@@ -12,6 +12,7 @@
 
 #import "DCPicScrollView.h"
 #import "DCWebImageManager.h"
+#import "NSTimer+Block.h"
 
 @interface DCPicScrollView () <UIScrollViewDelegate>
 
@@ -328,8 +329,12 @@
 
 - (void)setUpTimer {
     if (_AutoScrollDelay < 0.5) return;
-
-    _timer = [NSTimer timerWithTimeInterval:_AutoScrollDelay target:self selector:@selector(scorll) userInfo:nil repeats:YES];
+    __weak typeof (self) weakSelf = self;
+    _timer = [NSTimer block_timerWithTimeInterval:_AutoScrollDelay block:^{
+        __weak typeof (weakSelf) strongSelf = weakSelf;
+        [strongSelf scorll];
+    } repeats:YES];
+//    _timer = [NSTimer timerWithTimeInterval:_AutoScrollDelay target:self selector:@selector(scorll) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
 

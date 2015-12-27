@@ -7,24 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		843F8E921C14238E0055C517 /* place.png in Resources */ = {isa = PBXBuildFile; fileRef = 843F8E911C14238E0055C517 /* place.png */; settings = {ASSET_TAGS = (); }; };
+		58B652961C2F8FFE000FB1C4 /* NSTimer+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B652951C2F8FFE000FB1C4 /* NSTimer+Block.m */; };
+		843F8E921C14238E0055C517 /* place.png in Resources */ = {isa = PBXBuildFile; fileRef = 843F8E911C14238E0055C517 /* place.png */; };
 		846448021C11B94E0026C67E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 846448011C11B94E0026C67E /* main.m */; };
 		846448101C11B94E0026C67E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8464480E1C11B94E0026C67E /* LaunchScreen.storyboard */; };
-		847D97FC1C269CE500ACABCD /* Untitled.gif in Resources */ = {isa = PBXBuildFile; fileRef = 847D97FB1C269CE500ACABCD /* Untitled.gif */; settings = {ASSET_TAGS = (); }; };
-		84AB633F1C156158004321E4 /* DCWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB633E1C156158004321E4 /* DCWebImageManager.m */; settings = {ASSET_TAGS = (); }; };
-		84AC26801C129BA700F8C007 /* DCPicScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC267B1C129BA700F8C007 /* DCPicScrollView.m */; settings = {ASSET_TAGS = (); }; };
-		84AC268F1C129BB600F8C007 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26841C129BB600F8C007 /* 1.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26901C129BB600F8C007 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26851C129BB600F8C007 /* 2.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26911C129BB600F8C007 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26861C129BB600F8C007 /* 3.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26921C129BB600F8C007 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26871C129BB600F8C007 /* 4.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26931C129BB600F8C007 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26881C129BB600F8C007 /* 5.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26941C129BB600F8C007 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26891C129BB600F8C007 /* 6.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26951C129BB600F8C007 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC268A1C129BB600F8C007 /* 7.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26961C129BB600F8C007 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC268C1C129BB600F8C007 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
-		84AC26971C129BB600F8C007 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC268E1C129BB600F8C007 /* ViewController.m */; settings = {ASSET_TAGS = (); }; };
+		847D97FC1C269CE500ACABCD /* Untitled.gif in Resources */ = {isa = PBXBuildFile; fileRef = 847D97FB1C269CE500ACABCD /* Untitled.gif */; };
+		84AB633F1C156158004321E4 /* DCWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB633E1C156158004321E4 /* DCWebImageManager.m */; };
+		84AC26801C129BA700F8C007 /* DCPicScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC267B1C129BA700F8C007 /* DCPicScrollView.m */; };
+		84AC268F1C129BB600F8C007 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26841C129BB600F8C007 /* 1.jpg */; };
+		84AC26901C129BB600F8C007 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26851C129BB600F8C007 /* 2.jpg */; };
+		84AC26911C129BB600F8C007 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26861C129BB600F8C007 /* 3.jpg */; };
+		84AC26921C129BB600F8C007 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26871C129BB600F8C007 /* 4.jpg */; };
+		84AC26931C129BB600F8C007 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26881C129BB600F8C007 /* 5.jpg */; };
+		84AC26941C129BB600F8C007 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26891C129BB600F8C007 /* 6.jpg */; };
+		84AC26951C129BB600F8C007 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC268A1C129BB600F8C007 /* 7.jpg */; };
+		84AC26961C129BB600F8C007 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC268C1C129BB600F8C007 /* AppDelegate.m */; };
+		84AC26971C129BB600F8C007 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC268E1C129BB600F8C007 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		58B652941C2F8FFE000FB1C4 /* NSTimer+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Block.h"; sourceTree = "<group>"; };
+		58B652951C2F8FFE000FB1C4 /* NSTimer+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Block.m"; sourceTree = "<group>"; };
 		843F8E911C14238E0055C517 /* place.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place.png; sourceTree = "<group>"; };
 		846447FD1C11B94E0026C67E /* DCWebPicScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCWebPicScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		846448011C11B94E0026C67E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -59,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58B652931C2F8FBE000FB1C4 /* NSTimerBlock */ = {
+			isa = PBXGroup;
+			children = (
+				58B652941C2F8FFE000FB1C4 /* NSTimer+Block.h */,
+				58B652951C2F8FFE000FB1C4 /* NSTimer+Block.m */,
+			);
+			path = NSTimerBlock;
+			sourceTree = "<group>";
+		};
 		846447F41C11B94E0026C67E = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				8464480E1C11B94E0026C67E /* LaunchScreen.storyboard */,
+				58B652931C2F8FBE000FB1C4 /* NSTimerBlock */,
 				84AC26831C129BB600F8C007 /* demo */,
 				84AC26791C129BA700F8C007 /* DCPicscrollView */,
 				846448111C11B94E0026C67E /* Info.plist */,
@@ -208,6 +221,7 @@
 				846448021C11B94E0026C67E /* main.m in Sources */,
 				84AC26801C129BA700F8C007 /* DCPicScrollView.m in Sources */,
 				84AB633F1C156158004321E4 /* DCWebImageManager.m in Sources */,
+				58B652961C2F8FFE000FB1C4 /* NSTimer+Block.m in Sources */,
 				84AC26961C129BB600F8C007 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
