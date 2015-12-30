@@ -23,7 +23,7 @@
     
     __weak  UIImageView *_leftImageView,*_centerImageView,*_rightImageView;
     
-    __weak  UILabel *_leftLabel,*_centerLabel,*_rightLabel;
+    __weak  UILabel *_titleLabel;
     
     __weak  UIScrollView *_scrollView;
 
@@ -173,19 +173,13 @@
     
     [self setStyle:PageControlAtRight];
 
-   UIView *left = [self creatLabelBgView];
-   UIView *center = [self creatLabelBgView];
-   UIView *right = [self creatLabelBgView];
+   UIView *titleView = [self creatLabelBgView];
     
-    _leftLabel = (UILabel *)left.subviews.firstObject;
-    _centerLabel = (UILabel *)center.subviews.firstObject;
-    _rightLabel = (UILabel *)right.subviews.firstObject;
+    _titleLabel = (UILabel *)titleView.subviews.firstObject;
 
-    [_leftImageView addSubview:left];
-    [_centerImageView addSubview:center];
-    [_rightImageView addSubview:right];
+    [self addSubview:titleView];
 
-
+    [self bringSubviewToFront:_PageControl];
 }
 
 
@@ -207,15 +201,11 @@
 }
 
 - (void)setTextColor:(UIColor *)textColor {
-    _leftLabel.textColor = textColor;
-    _rightLabel.textColor = textColor;
-    _centerLabel.textColor = textColor;
+    _titleLabel.textColor = textColor;
 }
 
 - (void)setFont:(UIFont *)font {
-    _leftLabel.font = font;
-    _rightLabel.font = font;
-    _centerLabel.font = font;
+    _titleLabel.font = font;
 }
 
 #pragma mark scrollViewDelegate
@@ -292,11 +282,7 @@
     }
     
     if (_hasTitle) {
-        
-        _leftLabel.text = _titleData[LeftIndex];
-        _centerLabel.text = _titleData[centerIndex];
-        _rightLabel.text = _titleData[rightIndex];
-        
+        _titleLabel.text = [self.titleData objectAtIndex:centerIndex];
     }
     
     [_scrollView setContentOffset:CGPointMake(myWidth, 0)];
@@ -327,7 +313,7 @@
 }
 
 - (void)setUpTimer {
-    if (_AutoScrollDelay < 0.5) return;
+    if (_AutoScrollDelay < 0.5||_timer != nil) return;
 
     _timer = [NSTimer timerWithTimeInterval:_AutoScrollDelay target:self selector:@selector(scorll) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
