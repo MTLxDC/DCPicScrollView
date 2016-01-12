@@ -32,19 +32,23 @@
 
 #pragma mark downLoadImage
 
-- (BOOL)LoadDiskCacheWithUrlString:(NSString *)urlSting {
+- (BOOL)LoadDiskCacheWithUrlString:(NSString *)urlString {
     //取沙盒缓存
-    NSData *data = [NSData dataWithContentsOfFile:[self.cachePath stringByAppendingPathComponent:urlSting.lastPathComponent]];
+    NSData *data = [NSData dataWithContentsOfFile:[self.cachePath stringByAppendingPathComponent:urlString.lastPathComponent]];
     
     if (data.length > 0 ) {
         
         UIImage *image = [UIImage imageWithData:data];
         
         if (image) {
-            [self.webImageData setObject:image forKey:urlSting];
+            if (self.downLoadImageComplish) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.downLoadImageComplish(image,urlString);
+                });
+            }
             return YES;
         }else {
-            [[NSFileManager defaultManager] removeItemAtPath:[self.cachePath stringByAppendingPathComponent:urlSting.lastPathComponent] error:NULL];
+            [[NSFileManager defaultManager] removeItemAtPath:[self.cachePath stringByAppendingPathComponent:urlString.lastPathComponent] error:NULL];
         }
     }
     return NO;
@@ -69,7 +73,7 @@
         }] resume];
         
     }else {
-            
+        
         [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlSting]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
             
             [self downLoadImagefinish:data
@@ -91,7 +95,7 @@
     }
     
     UIImage *image = [UIImage imageWithData:data];
-
+    
     
     if (!image) {
         
@@ -104,12 +108,14 @@
         return ;
     }
     
-    //                内存缓存
-    [self.webImageData setObject:image forKey:urlString];
     //                沙盒缓存
     [data writeToFile:[self.cachePath stringByAppendingPathComponent:urlString.lastPathComponent] atomically:YES];
- 
     
+    if (self.downLoadImageComplish) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.downLoadImageComplish(image,urlString);
+        });
+    }
 }
 
 - (void)repeatDownLoadImage:(NSString *)urlString error:(NSError *)error{
@@ -134,12 +140,6 @@
 
 #pragma mark lazyload
 
-- (NSMutableDictionary *)webImageData {
-    if (!_webImageCache) {
-        _webImageCache = [[NSMutableDictionary alloc] init];
-    }
-    return _webImageCache;
-}
 
 - (NSMutableDictionary *)DownloadImageCount {
     if (!_DownloadImageCount) {
@@ -150,8 +150,14 @@
 
 - (NSString *)cachePath {
     if (!_cachePath) {
-        _cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+        
+        _cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:NSStringFromClass([self class])];
+        
+        [[NSFileManager defaultManager] createDirectoryAtPath:_cachePath withIntermediateDirectories:NO attributes:nil error:NULL];
+        
     }
     return _cachePath;
 }
+
+
 @end
