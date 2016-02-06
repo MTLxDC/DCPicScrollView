@@ -34,7 +34,7 @@
 
 - (BOOL)LoadDiskCacheWithUrlString:(NSString *)urlString {
     //取沙盒缓存
-    NSData *data = [NSData dataWithContentsOfFile:[self.cachePath stringByAppendingPathComponent:urlString.lastPathComponent]];
+    NSData *data = [NSData dataWithContentsOfFile:[self.cachePath stringByAppendingPathComponent:urlString]];
     
     if (data.length > 0 ) {
         
@@ -48,7 +48,7 @@
             }
             return YES;
         }else {
-            [[NSFileManager defaultManager] removeItemAtPath:[self.cachePath stringByAppendingPathComponent:urlString.lastPathComponent] error:NULL];
+            [[NSFileManager defaultManager] removeItemAtPath:[self.cachePath stringByAppendingPathComponent:urlString] error:NULL];
         }
     }
     return NO;
@@ -109,7 +109,7 @@
     }
     
     //                沙盒缓存
-    [data writeToFile:[self.cachePath stringByAppendingPathComponent:urlString.lastPathComponent] atomically:YES];
+    [data writeToFile:[self.cachePath stringByAppendingPathComponent:urlString] atomically:YES];
     
     if (self.downLoadImageComplish) {
         dispatch_async(dispatch_get_main_queue(), ^{
