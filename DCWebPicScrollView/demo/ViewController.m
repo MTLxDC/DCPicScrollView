@@ -32,10 +32,7 @@ static CGFloat h = 50;
     
     //网络加载
     
-    NSArray *UrlStringArray = @[@"http://p1.qqyou.com/pic/UploadPic/2013-3/19/2013031923222781617.jpg",
-                     @"http://cdn.duitang.com/uploads/item/201409/27/20140927192649_NxVKT.thumb.700_0.png",
-                     @"http://img4.duitang.com/uploads/item/201409/27/20140927192458_GcRxV.jpeg",
-                     @"http://cdn.duitang.com/uploads/item/201304/20/20130420192413_TeRRP.thumb.700_0.jpeg"];
+    NSArray *UrlStringArray = @[@"http://p1.qqyou.com/pic/UploadPic/2013-3/19/2013031923222781617.jpg"];
     
 
    NSArray *titleArray = [@"午夜寂寞 谁来陪我,唱一首动人的情歌.你问我说 快不快乐,唱情歌越唱越寂寞.谁明白我 想要什么,一瞬间释放的洒脱.灯光闪烁 不必啰嗦,我就是传说中的那个摇摆哥.我是摇摆哥 音乐会让我快乐,我是摇摆哥 我已忘掉了寂寞.我是摇摆哥 音乐会让我洒脱,我们一起唱这摇摆的歌" componentsSeparatedByString:@"."];
@@ -55,7 +52,7 @@ static CGFloat h = 50;
     
     //占位图片,你可以在下载图片失败处修改占位图片
     
-    picView.placeImage = [UIImage imageNamed:@"place.png"];
+//    picView.placeImage = [UIImage imageNamed:@"place.png"];
     
     //图片被点击事件,当前第几张图片被点击了,和数组顺序一致
     
@@ -91,7 +88,7 @@ static CGFloat h = 50;
     
     NSMutableArray *arr3 = [[NSMutableArray alloc] init];
     
-    for (int i = 1; i < 8; i++) {
+    for (int i = 1; i < 2; i++) {
         [arr2 addObject:[NSString stringWithFormat:@"%d.jpg",i]];
         [arr3 addObject:[NSString stringWithFormat:@"我是第%d张图片啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",i]];
     };
@@ -100,6 +97,7 @@ static CGFloat h = 50;
     DCPicScrollView  *picView1 = [DCPicScrollView picScrollViewWithFrame:CGRectMake(0,self.view.frame.size.height - h*5,self.view.frame.size.width, h*2) WithImageUrls:arr2];
     
     picView1.style = PageControlAtCenter;
+    picView1.titleData = arr3;
     
     picView1.backgroundColor = [UIColor clearColor];
     [picView1 setImageViewDidTapAtIndex:^(NSInteger index) {

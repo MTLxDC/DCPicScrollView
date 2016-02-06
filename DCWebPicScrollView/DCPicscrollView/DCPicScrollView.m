@@ -23,6 +23,7 @@
 @end
 
 
+
 @implementation DCPicScrollView{
     
     __weak  UIImageView *_leftImageView,*_centerImageView,*_rightImageView;
@@ -90,11 +91,11 @@
         if (_isNetwork) {
             DCWebImageManager *manager = [DCWebImageManager shareManager];
             
-            [manager downloadImageWithUrlString:ImageName.firstObject];
-            
             [manager setDownLoadImageComplish:^(UIImage *image, NSString *url) {
                 img.image = image;
             }];
+            
+            [manager downloadImageWithUrlString:ImageName.firstObject];
             
         }else {
             img.image = [UIImage imageNamed:ImageName.firstObject];
@@ -367,6 +368,7 @@
 }
 
 - (void)setImageUrlStrings:(NSArray *)imageUrlStrings {
+    
     _imageUrlStrings = imageUrlStrings;
     _imageData = [NSMutableDictionary dictionaryWithCapacity:_imageUrlStrings.count];
     
