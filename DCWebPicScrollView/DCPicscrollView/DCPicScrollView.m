@@ -11,8 +11,7 @@
 #define pageSize (myHeight * 0.2 > 25 ? 25 : myHeight * 0.2)
 
 #import "DCPicScrollView.h"
-#import "DCWebImageManager.h"
-
+#import "UIImageView+WebCache.h"
 
 @interface DCPicScrollView () <UIScrollViewDelegate>
 
@@ -21,7 +20,6 @@
 @property (nonatomic,strong) NSArray *imageUrlStrings;
 
 @end
-
 
 
 @implementation DCPicScrollView{
@@ -59,7 +57,7 @@
 
 
 - (void)imageViewDidTap {
-    if (self.imageViewDidTapAtIndex != nil) {
+    if (self.imageViewDidTapAtIndex) {
         self.imageViewDidTapAtIndex(_currentIndex);
     }
 }
@@ -89,17 +87,14 @@
         _isNetwork = [ImageName.firstObject hasPrefix:@"http://"];
         
         if (_isNetwork) {
-            DCWebImageManager *manager = [DCWebImageManager shareManager];
-            
-            [manager setDownLoadImageComplish:^(UIImage *image, NSString *url) {
-                img.image = image;
-            }];
-            
-            [manager downloadImageWithUrlString:ImageName.firstObject];
-            
+            NSURL *imageUrl = [NSURL URLWithString:ImageName.firstObject];
+            [img sd_setImageWithURL:imageUrl placeholderImage:_placeImage];
         }else {
             img.image = [UIImage imageNamed:ImageName.firstObject];
         }
+        
+        img.userInteractionEnabled = YES;
+        [img addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewDidTap)]];
         
         return self;
     }
@@ -307,11 +302,9 @@
 
 - (void)changeImageLeft:(NSInteger)LeftIndex center:(NSInteger)centerIndex right:(NSInteger)rightIndex {
     
-    
-    _leftImageView.image = [self setImageWithIndex:LeftIndex];
-    _centerImageView.image = [self setImageWithIndex:centerIndex];
-    _rightImageView.image = [self setImageWithIndex:rightIndex];
-    
+    [_leftImageView sd_setImageWithURL:[self imageUrlWithIndex:LeftIndex] placeholderImage:_placeImage];
+    [_centerImageView sd_setImageWithURL:[self imageUrlWithIndex:centerIndex] placeholderImage:_placeImage];
+    [_rightImageView sd_setImageWithURL:[self imageUrlWithIndex:rightIndex] placeholderImage:_placeImage];
     
     if (_hasTitle) {
         _titleLabel.text = [self.titleData objectAtIndex:centerIndex];
@@ -331,16 +324,12 @@
     }
 }
 
-
-
-- (UIImage *)setImageWithIndex:(NSInteger)index {
+- (NSURL *)imageUrlWithIndex:(NSInteger)index {
     if (index < 0||index >= self.imageUrlStrings.count) {
-        return _placeImage;
+        return nil;
     }
-    //从内存缓存中取,如果没有使用占位图片
-    UIImage *image = [self.imageData objectForKey:self.imageUrlStrings[index]];
-    
-    return image ? image : _placeImage;
+    NSURL *imageUrl = [NSURL URLWithString:self.imageUrlStrings[index]];
+    return imageUrl;
 }
 
 
@@ -368,85 +357,20 @@
 }
 
 - (void)setImageUrlStrings:(NSArray *)imageUrlStrings {
-    
     _imageUrlStrings = imageUrlStrings;
     _imageData = [NSMutableDictionary dictionaryWithCapacity:_imageUrlStrings.count];
     
     _isNetwork = [imageUrlStrings.firstObject hasPrefix:@"http://"];
     
-    if (_isNetwork) {
-        
-        DCWebImageManager *manager = [DCWebImageManager shareManager];
-        
-        [manager setDownLoadImageComplish:^(UIImage *image, NSString *url) {
-            [self.imageData setObject:image forKey:url];
-            [self changeImageLeft:_currentIndex-1 center:_currentIndex right:_currentIndex+1];
-        }];
-        
-        for (NSString *urlSting in imageUrlStrings) {
-            [manager downloadImageWithUrlString:urlSting];
-        }
-        
-    }else {
-        
+    if (!_isNetwork) {
         for (NSString *name in imageUrlStrings) {
             [self.imageData setObject:[UIImage imageNamed:name] forKey:name];
         }
-        
-        
     }
-    
 }
-
-
 
 -(void)dealloc {
     [self removeTimer];
 }
 
-//
-//- (void)getImage {
-//
-//    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-//
-//    for (NSString *urlString in _imageData) {
-//
-//        [manager downloadImageWithURL:[NSURL URLWithString:urlString] options:SDWebImageHighPriority progress:NULL completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-//            if (error) {
-//                NSLog(@"%@",error);
-//            }
-//        }];
-//    }
-//
-//}
-//- (UIImage *)setImageWithIndex:(NSInteger)index {
-//
-//  UIImage *image =
-//    [[[SDWebImageManager sharedManager] imageCache] imageFromMemoryCacheForKey:_imageData[index]];
-//    if (image) {
-//        return image;
-//    }else {
-//        return _placeImage;
-//    }
-//    
-//}
-
-
-
-
-
-
-
 @end
-
-
-
-
-
-
-
-
-
-
-
-
