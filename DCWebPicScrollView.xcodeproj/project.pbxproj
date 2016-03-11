@@ -7,24 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		843F8E921C14238E0055C517 /* place.png in Resources */ = {isa = PBXBuildFile; fileRef = 843F8E911C14238E0055C517 /* place.png */; settings = {ASSET_TAGS = (); }; };
+		555B521065E7E5D7267B961A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 380C35FBAEBC58F4304EFCD6 /* libPods.a */; };
+		843F8E921C14238E0055C517 /* place.png in Resources */ = {isa = PBXBuildFile; fileRef = 843F8E911C14238E0055C517 /* place.png */; };
 		846448021C11B94E0026C67E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 846448011C11B94E0026C67E /* main.m */; };
 		846448101C11B94E0026C67E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8464480E1C11B94E0026C67E /* LaunchScreen.storyboard */; };
-		847D97FC1C269CE500ACABCD /* Untitled.gif in Resources */ = {isa = PBXBuildFile; fileRef = 847D97FB1C269CE500ACABCD /* Untitled.gif */; settings = {ASSET_TAGS = (); }; };
-		84AB633F1C156158004321E4 /* DCWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB633E1C156158004321E4 /* DCWebImageManager.m */; settings = {ASSET_TAGS = (); }; };
-		84AC26801C129BA700F8C007 /* DCPicScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC267B1C129BA700F8C007 /* DCPicScrollView.m */; settings = {ASSET_TAGS = (); }; };
-		84AC268F1C129BB600F8C007 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26841C129BB600F8C007 /* 1.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26901C129BB600F8C007 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26851C129BB600F8C007 /* 2.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26911C129BB600F8C007 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26861C129BB600F8C007 /* 3.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26921C129BB600F8C007 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26871C129BB600F8C007 /* 4.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26931C129BB600F8C007 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26881C129BB600F8C007 /* 5.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26941C129BB600F8C007 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26891C129BB600F8C007 /* 6.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26951C129BB600F8C007 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC268A1C129BB600F8C007 /* 7.jpg */; settings = {ASSET_TAGS = (); }; };
-		84AC26961C129BB600F8C007 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC268C1C129BB600F8C007 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
-		84AC26971C129BB600F8C007 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC268E1C129BB600F8C007 /* ViewController.m */; settings = {ASSET_TAGS = (); }; };
+		847D97FC1C269CE500ACABCD /* Untitled.gif in Resources */ = {isa = PBXBuildFile; fileRef = 847D97FB1C269CE500ACABCD /* Untitled.gif */; };
+		84AB633F1C156158004321E4 /* DCWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB633E1C156158004321E4 /* DCWebImageManager.m */; };
+		84AC26801C129BA700F8C007 /* DCPicScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC267B1C129BA700F8C007 /* DCPicScrollView.m */; };
+		84AC268F1C129BB600F8C007 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26841C129BB600F8C007 /* 1.jpg */; };
+		84AC26901C129BB600F8C007 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26851C129BB600F8C007 /* 2.jpg */; };
+		84AC26911C129BB600F8C007 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26861C129BB600F8C007 /* 3.jpg */; };
+		84AC26921C129BB600F8C007 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26871C129BB600F8C007 /* 4.jpg */; };
+		84AC26931C129BB600F8C007 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26881C129BB600F8C007 /* 5.jpg */; };
+		84AC26941C129BB600F8C007 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26891C129BB600F8C007 /* 6.jpg */; };
+		84AC26951C129BB600F8C007 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84AC268A1C129BB600F8C007 /* 7.jpg */; };
+		84AC26961C129BB600F8C007 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC268C1C129BB600F8C007 /* AppDelegate.m */; };
+		84AC26971C129BB600F8C007 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AC268E1C129BB600F8C007 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CA561B121C2F64CEEC39A7B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		380C35FBAEBC58F4304EFCD6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		843F8E911C14238E0055C517 /* place.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place.png; sourceTree = "<group>"; };
 		846447FD1C11B94E0026C67E /* DCWebPicScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCWebPicScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		846448011C11B94E0026C67E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 		84AC268C1C129BB600F8C007 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		84AC268D1C129BB600F8C007 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		84AC268E1C129BB600F8C007 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A9D0A9778F5242CF1BDFCA8E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555B521065E7E5D7267B961A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +69,8 @@
 			children = (
 				846447FF1C11B94E0026C67E /* DCWebPicScrollView */,
 				846447FE1C11B94E0026C67E /* Products */,
+				C0F537DEF0B68363AB1BB7D9 /* Pods */,
+				907AC18A25E2626F07D2C7A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +133,23 @@
 			path = demo;
 			sourceTree = "<group>";
 		};
+		907AC18A25E2626F07D2C7A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				380C35FBAEBC58F4304EFCD6 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C0F537DEF0B68363AB1BB7D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A9D0A9778F5242CF1BDFCA8E /* Pods.debug.xcconfig */,
+				0CA561B121C2F64CEEC39A7B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,9 +157,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 846448141C11B94E0026C67E /* Build configuration list for PBXNativeTarget "DCWebPicScrollView" */;
 			buildPhases = (
+				E16D86A714C809DB0D5D9982 /* Check Pods Manifest.lock */,
 				846447F91C11B94E0026C67E /* Sources */,
 				846447FA1C11B94E0026C67E /* Frameworks */,
 				846447FB1C11B94E0026C67E /* Resources */,
+				B992ED6A16C6E3784C0BB890 /* Embed Pods Frameworks */,
+				1B9F0AF2CBAB74CE9F97475A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -198,6 +225,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1B9F0AF2CBAB74CE9F97475A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B992ED6A16C6E3784C0BB890 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E16D86A714C809DB0D5D9982 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		846447F91C11B94E0026C67E /* Sources */ = {
@@ -308,6 +383,7 @@
 		};
 		846448151C11B94E0026C67E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9D0A9778F5242CF1BDFCA8E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DCWebPicScrollView/Info.plist;
@@ -320,6 +396,7 @@
 		};
 		846448161C11B94E0026C67E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CA561B121C2F64CEEC39A7B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DCWebPicScrollView/Info.plist;
